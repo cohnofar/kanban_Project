@@ -1,0 +1,27 @@
+﻿<Window x:Class="Frontend.View.UserBoardsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.View" xmlns:viewmodel="clr-namespace:Frontend.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:UserBoardsViewModel}"
+        mc:Ignorable="d"
+        Title="UserBoardsView" Height="500" Width="800">
+    <Grid  Background="#FFF69999" UseLayoutRounding="True" RenderTransformOrigin="0.499,0.505" ShowGridLines="True">
+        <StackPanel>
+            <ListBox ItemsSource="{Binding Path=Display.Boards}" SelectedItem="{Binding Path=SelectedBoard, Mode=TwoWay}" VerticalContentAlignment="Top" Height="310" Width="291" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="254,74,254,10" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="0,32,0,0" Width="270">
+                                <Label Content="{Binding Path=Name, Mode=OneWay}" BorderBrush="{x:Null}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <Label Content="Choose Board" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" Foreground="#FF9CD7A9" FontWeight="Bold"/>
+        <Button Content="Enter Board" Click="Select_Board_Click" IsEnabled="{Binding Path=BoardEnableForward,Mode=OneWay}" HorizontalAlignment="Center" Margin="0,396,0,0" VerticalAlignment="Top" Height="28" Width="120" FontWeight="Bold" FontSize="18" Foreground="#FFF69999"/>
+
+    </Grid>
+</Window>
